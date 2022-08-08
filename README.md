@@ -10,20 +10,45 @@
 Add notes for creating a project, a service account and credentials and a remote state bucket manually.
 
 ## Manual tasks (once-off) - bash scripts coming soon
-### Create a storage bucket for the remote state
+## Create a storage bucket for the remote state
 
 [![Watch the video](https://i9.ytimg.com/vi/nOmxVlHdFng/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLD4tJJfdmJpTbvs4qbRqDiCn2SpLw)](https://youtu.be/nOmxVlHdFng)
 
-### Create a service account
+## Create a service account
 
 [![Watch the video](https://i9.ytimg.com/vi/nOmxVlHdFng/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLD4tJJfdmJpTbvs4qbRqDiCn2SpLw&retry=4)](https://youtu.be/nOmxVlHdFng)
 
-### Create and download the service account keys
+## Create and download the service account keys
 
 [![Watch the video](https://i9.ytimg.com/vi/VipHgpVFY5k/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLAWXmy-ujXBJTJrtO6uKdxHXy-zVQ)](https://youtu.be/VipHgpVFY5k)
 
 # Infrastructure
-TODO
+Terraform and Ansible are used to create and provision the infractructure. Terraform also generates the Ansible inventory which is used to keep track of the infrastructure where access may be needed regularly, such as block chain nodes where the software version needs to be updated regularly. These updates can be performed with Ansible.
+
+All Terraform commands are run from a Makefile to make the process easier and so they can be run from the root directory. The idea is to be able to have a single command to setup and configure the entire project which will also be run through CI (Github Actions).
+
+### Initialise Terraform
+
+```zsh
+make terraform-init
+```
+
+### Generate a plan
+
+```zsh
+make terraform-plan
+```
+
+### Create/Update infrastructure
+
+```zsh
+make terraform-apply
+```
+
+### Destroy all infrastructure except remote state bucket
+```zsh
+make terraform-destroy
+```
 
 # Provisioning
 TODO
