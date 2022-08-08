@@ -7,6 +7,21 @@
 * [Ansible](https://www.ansible.com/) installed on your development machine
 * [Packer](https://www.packer.io/) installed on your development machine
 
+Add notes for creating a project, a service account and credentials and a remote state bucket manually.
+
+## Manual tasks (once-off) - bash scripts coming soon
+### Create a storage bucket for the remote state
+
+[![Watch the video](https://i9.ytimg.com/vi/nOmxVlHdFng/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLD4tJJfdmJpTbvs4qbRqDiCn2SpLw)](https://youtu.be/nOmxVlHdFng)
+
+### Create a service account
+
+[![Watch the video](https://i9.ytimg.com/vi/nOmxVlHdFng/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLD4tJJfdmJpTbvs4qbRqDiCn2SpLw&retry=4)](https://youtu.be/nOmxVlHdFng)
+
+### Create and download the service account keys
+
+[![Watch the video](https://i9.ytimg.com/vi/VipHgpVFY5k/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLAWXmy-ujXBJTJrtO6uKdxHXy-zVQ)](https://youtu.be/VipHgpVFY5k)
+
 # Infrastructure
 TODO
 
