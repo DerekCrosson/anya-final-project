@@ -1,0 +1,22 @@
+name: Deploy infrastructure
+
+on:
+  push: 
+    branches: 
+      - main
+
+jobs:
+  build: 
+    name: Deploy machines
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Initialise Terraform
+      run: make terraform-init
+        
+    - name: Validate Terraform
+      run: make terraform-validate
+    - name: Create infrastructure
+      run: make terraform-apply -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }'
