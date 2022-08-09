@@ -21,7 +21,7 @@ jobs:
         uses: google-github-actions/auth@v0
         with:
           token_format: 'access_token'
-          workload_identity_provider: 'projects/934971664122/locations/global/workloadIdentityPools/cicd-pool/providers/cicd-provider'
+          workload_identity_provider: 'projects/934971664122/locations/global/workloadIdentityPools/anya-final-project-derek/providers/github'
           service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
 
       - name: Initialise Terraform
