@@ -6,27 +6,28 @@ on:
       - main
 
 jobs:
-  name: 'Setup GCP and Terraform'
-  runs-on: ubuntu-latest
-  permissions:
-    contents: 'read'
-    id-token: 'write'
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+  build:
+    name: 'Setup GCP and Terraform'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Auth GCP Service Account
-      id: auth-gcp
-      uses: google-github-actions/auth@v0
-      with:
-        token_format: 'access_token'
-        workload_identity_provider: 'projects/934971664122/locations/global/workloadIdentityPools/cicd-pool/providers/cicd-provider'
-        service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
+      - name: Auth GCP Service Account
+        id: auth-gcp
+        uses: google-github-actions/auth@v0
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: 'projects/934971664122/locations/global/workloadIdentityPools/cicd-pool/providers/cicd-provider'
+          service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
 
-    - name: Initialise Terraform
-      run: make terraform-init
-        
-    - name: Validate Terraform
-      run: make terraform-validate
-    - name: Create infrastructure
-      run: make terraform-apply -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }'
+      - name: Initialise Terraform
+        run: make terraform-init
+          
+      - name: Validate Terraform
+        run: make terraform-validate
+      - name: Create infrastructure
+        run: make terraform-apply -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }'
