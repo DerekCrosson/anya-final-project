@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
     name: 'Setup GCP and Terraform'
     runs-on: ubuntu-latest
     permissions:
