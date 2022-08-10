@@ -24,6 +24,7 @@ jobs:
           workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
           service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
           project_id: '${ secrets.GCP_PROJECT_ID }'
+          audience: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER_POOL_PROVIDER_AUDIENCE }'
 
       - name: Initialise Terraform
         run: make terraform-init
