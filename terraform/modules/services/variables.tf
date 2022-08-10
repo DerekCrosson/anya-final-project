@@ -8,6 +8,8 @@ variable "service_list" {
   description = "The list of GCP APIs that need to be enabled for the infrastructure to be automated"
   default = [
     "iam.googleapis.com",
-    "compute.googleapis.com"
+    "compute.googleapis.com",
+    "storage-component.googleapis.com",
+    "storage-api.googleapis.com"
   ]
 }
