@@ -24,9 +24,9 @@ jobs:
           project_id: '${ secrets.GCP_PROJECT_ID }'
 
       - name: Initialise Terraform
-        run: cd terraform && terraform-init -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
+        run: cd terraform && terraform init -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
           
       - name: Validate Terraform
         run: make terraform-validate
       - name: Create infrastructure
-        run: cd terraform && terraform-apply -target=module.self_hosted_ci_runners.google_compute_instance.runner -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }' && cd ..
+        run: cd terraform && terraform apply -target=module.self_hosted_ci_runners.google_compute_instance.runner -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }' && cd ..
