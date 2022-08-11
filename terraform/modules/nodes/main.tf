@@ -92,3 +92,39 @@ resource "google_compute_firewall" "blockchain" {
   source_ranges = "${ var.blockchain_firewall_source_ranges }"
   target_tags   = ["allow-relay-chain-and-parachain"]
 }
+
+resource "google_compute_firewall" "boot_node_and_collator_node" {
+  name    = "allow-websocket-and-rpc"
+  network = google_compute_network.vpc_network.name
+
+  allow {
+    protocol = "tcp"
+    ports    = "${ var.node_relay_chain_ports }"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = "${ var.node_parachain_ports }"
+  }
+
+  source_ranges = "${ var.blockchain_firewall_source_ranges }"
+  target_tags   = ["allow-websocket-and-rpc"]
+}
+
+resource "google_compute_firewall" "prometheus" {
+  name    = "allow-prometheus"
+  network = google_compute_network.vpc_network.name
+
+  allow {
+    protocol = "tcp"
+    ports    = "${ var.parachain_prometheus_ports }"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = "${ var.relay_chain_prometheus_ports }"
+  }
+
+  source_ranges = "${ var.blockchain_firewall_source_ranges }"
+  target_tags   = ["allow-prometheus"]
+}

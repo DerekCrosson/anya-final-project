@@ -11,30 +11,30 @@ variable "volumes" {
       }
 
       physical_block_size_bytes = 4096
-    },
-    "polkadot-boot-node-secondary" = {
-      name              = "secondary-boot-node-data"
-      type              = "pd-ssd"
-      zone              = "europe-west2-a"
-      labels = {
-        type = "blockchain-data",
-        role = "boot-node",
-        tier = "secondary"
-      }
+    }#,
+    # "polkadot-boot-node-secondary" = {
+    #   name              = "secondary-boot-node-data"
+    #   type              = "pd-ssd"
+    #   zone              = "europe-west2-a"
+    #   labels = {
+    #     type = "blockchain-data",
+    #     role = "boot-node",
+    #     tier = "secondary"
+    #   }
 
-      physical_block_size_bytes = 4096
-    },
-    "polkadot-collator-node" = {
-      name              = "collator-node-data"
-      type              = "pd-ssd"
-      zone              = "europe-west2-a"
-      labels = {
-        type = "blockchain-data",
-        role = "collator-node"
-      }
+    #   physical_block_size_bytes = 4096
+    # },
+    # "polkadot-collator-node" = {
+    #   name              = "collator-node-data"
+    #   type              = "pd-ssd"
+    #   zone              = "europe-west2-a"
+    #   labels = {
+    #     type = "blockchain-data",
+    #     role = "collator-node"
+    #   }
 
-      physical_block_size_bytes = 4096
-    }
+    #   physical_block_size_bytes = 4096
+    # }
   }
 }
 
@@ -45,24 +45,24 @@ variable "boot_nodes" {
       machine_type = "e2-medium"
       zone = "europe-west2-a",
       tags = ["polkadot", "node", "boot", "primary"]
-    },
-    "polkadot-boot-node-secondary" = {
-      name = "polkadot-boot-node-secondary"
-      machine_type = "e2-medium"
-      zone = "europe-west2-a",
-      tags = ["polkadot", "node", "boot", "secondary"]
-    }
+    }#,
+    # "polkadot-boot-node-secondary" = {
+    #   name = "polkadot-boot-node-secondary"
+    #   machine_type = "e2-medium"
+    #   zone = "europe-west2-a",
+    #   tags = ["polkadot", "node", "boot", "secondary"]
+    # }
   }
 }
 
 variable "collator_nodes" {
   default = {
-    "polkadot-collator-node" = {
-      name = "polkadot-collator-node"
-      machine_type = "e2-medium"
-      zone = "europe-west2-a",
-      tags = ["polkadot", "node", "collator"]
-    }
+    # "polkadot-collator-node" = {
+    #   name = "polkadot-collator-node"
+    #   machine_type = "e2-medium"
+    #   zone = "europe-west2-a",
+    #   tags = ["polkadot", "node", "collator"]
+    # }
   }
 }
 
@@ -85,26 +85,6 @@ variable "service_account_scopes" {
   description = "The scopes for the service account"
   default = ["cloud-platform"]
 }
-
-# variable "node_name" {
-#   description = "The name of the resource"
-#   default = "node"
-# }
-
-# variable "node_machine_type" {
-#   description = "The type of machine used to create the runner"
-#   default = "e2-medium"
-# }
-
-# variable "node_zone" {
-#   description = "The zone that the resource is created in"
-#   default = "europe-west2-a"
-# }
-
-# variable "node_tags" {
-#   description = "The tags for the resource"
-#   default = ["polkadot", "node"]
-# }
 
 variable "vpc_network_project_name" {
   description = "The GCP project name"
@@ -145,6 +125,22 @@ variable "node_parachain_ports" {
   default = ["30334"]
 }
 
+variable "node_web_socket_ports" {
+  default = ["8833"]
+}
+
+variable "node_rpc_ports" {
+  default = ["8844"]
+}
+
+variable "parachain_prometheus_ports" {
+  default = ["9615"]
+}
+
+variable "relay_chain_prometheus_ports" {
+  default = ["9625"]
+}
+
 variable "ssh_firewall_source_ranges" {
   default = ["0.0.0.0/0"]
 }
@@ -152,15 +148,3 @@ variable "ssh_firewall_source_ranges" {
 variable "blockchain_firewall_source_ranges" {
   default = ["0.0.0.0/0"]
 }
-
-# variable "node_attached_disk_name" {
-#   default = "node-data"
-# }
-
-# variable "node_attached_disk_type" {
-#   default = "pd-ssd"
-# }
-
-# variable "attached_disk_type" {
-#   default = "pd-ssd"
-# }
