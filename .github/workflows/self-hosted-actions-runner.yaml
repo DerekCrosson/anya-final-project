@@ -15,13 +15,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - run: |
+        echo '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
+
       - name: Authenticate to Google Cloud
         id: auth-gcp
         uses: google-github-actions/auth@v0
         with:
           workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
           service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
-          #project_id: '${ secrets.GCP_PROJECT_ID }'
+          project_id: '${ secrets.GCP_PROJECT_ID }'
           token_format: 'access_token'
           audience: '${ secrets.GCP_POOL_AUDIENCE }'
 
