@@ -7,7 +7,7 @@ on:
 
 jobs:
   run:
-    name: 'Setup GCP and Terraform'
+    name: 'Setup GCP and Deploy self-hosted actions runner'
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
@@ -24,7 +24,7 @@ jobs:
           project_id: '${ secrets.GCP_PROJECT_ID }'
 
       - name: Initialise Terraform
-        run: cd terraform && terraform init -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
+        run: cd terraform && terraform init -reconfigure -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
           
       - name: Validate Terraform
         run: cd terraform && terraform validate -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
