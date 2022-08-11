@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: |
-        echo '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
+      - name: 'Debugging'
+        run: echo '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
 
       - name: Authenticate to Google Cloud
         id: auth-gcp
