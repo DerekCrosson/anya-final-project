@@ -10,7 +10,7 @@ variable "volumes" {
         tier = "primary"
       }
 
-      physical_block_size_bytes = 16384
+      physical_block_size_bytes = 4096
     },
     "polkadot-boot-node-secondary" = {
       name              = "secondary-boot-node-data"
@@ -22,7 +22,7 @@ variable "volumes" {
         tier = "secondary"
       }
 
-      physical_block_size_bytes = 16384
+      physical_block_size_bytes = 4096
     },
     "polkadot-collator-node" = {
       name              = "collator-node-data"
@@ -33,7 +33,7 @@ variable "volumes" {
         role = "collator-node"
       }
 
-      physical_block_size_bytes = 16384
+      physical_block_size_bytes = 4096
     }
   }
 }
