@@ -1,4 +1,4 @@
-name: Deploy infrastructure
+name: Deploy runners
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 jobs:
   run:
     name: 'Setup GCP and Terraform'
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -29,4 +29,4 @@ jobs:
       - name: Validate Terraform
         run: make terraform-validate
       - name: Create infrastructure
-        run: make terraform-apply -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }'
+        run: cd terraform && terraform-apply -target=module.self_hosted_ci_runners.google_compute_instance.runner -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }'
