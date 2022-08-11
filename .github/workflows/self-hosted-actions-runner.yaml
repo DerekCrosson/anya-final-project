@@ -15,9 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: 'Debugging'
-        run: 'echo ${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL } > /tmp/terraform-service-account-email'
-
       - name: Authenticate to Google Cloud
         id: auth-gcp
         uses: google-github-actions/auth@v0
