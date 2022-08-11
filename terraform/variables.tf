@@ -1,6 +1,6 @@
 variable "project_id" {
   description = "The GCP project ID"
-  default = "anya-final-project-derek"
+  default = "anya-fellowship-project"
 }
 
 variable "region" {
