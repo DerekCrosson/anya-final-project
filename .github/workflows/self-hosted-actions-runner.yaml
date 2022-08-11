@@ -8,7 +8,7 @@ on:
 jobs:
   run:
     name: 'Setup GCP and Terraform'
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: 'read'
       id-token: 'write'
