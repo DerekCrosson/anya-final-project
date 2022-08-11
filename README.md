@@ -1,5 +1,16 @@
 # GCP setup Polkadot Network - INCOMPLETE
 This project is still incomplete and needs about 2 more full days of work to be done.
+TODO:
+- Increase GCP location quotas for disk size so all nodes can be deployed
+- Fix Workload Identity Configuration provider attributes so Github Actions can deploy self-hosted runners
+- Create an Action to deploy the rest of the infrastructure and commit the latest Ansible inventory to the repo
+- Install Polkadot on all VMs (boot nodes and collator nodes)
+- Create a Kubernetes cluster to run RPC nodes using Terraform
+- Deploy helm charts for RPC nodes and for observability using Ansible
+- Write/Update documentation and update videos
+- Write some tests
+- Write bash scripts for manual tasks and run them using an Action
+- Bake my own images using Packer/Create an apt package?
 
 # Prerequisites
 
