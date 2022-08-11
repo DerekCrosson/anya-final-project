@@ -3,7 +3,7 @@ variable "volumes" {
     "polkadot-boot-node-primary" = {
       name              = "primary-boot-node-data"
       type              = "pd-ssd"
-      zone              = "europe-west1-a"
+      zone              = "europe-west2-a"
       labels = {
         type = "blockchain-data",
         role = "boot-node",
@@ -27,7 +27,7 @@ variable "volumes" {
     "polkadot-collator-node" = {
       name              = "collator-node-data"
       type              = "pd-ssd"
-      zone              = "europe-west3-c"
+      zone              = "europe-west2-c"
       labels = {
         type = "blockchain-data",
         role = "collator-node"
@@ -43,7 +43,7 @@ variable "boot_nodes" {
     "polkadot-boot-node-primary" = {
       name = "polkadot-boot-node-primary"
       machine_type = "e2-medium"
-      zone = "europe-west1-a",
+      zone = "europe-west2-a",
       tags = ["polkadot", "node", "boot", "primary"]
     },
     "polkadot-boot-node-secondary" = {
@@ -60,7 +60,7 @@ variable "collator_nodes" {
     "polkadot-collator-node" = {
       name = "polkadot-collator-node"
       machine_type = "e2-medium"
-      zone = "europe-west3-c",
+      zone = "europe-west2-c",
       tags = ["polkadot", "node", "collator"]
     }
   }
