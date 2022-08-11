@@ -27,7 +27,7 @@ jobs:
           access_token_lifetime: '1800' # 30 minutes
 
       - name: Initialise Terraform
-        run: cd terraform && terraform init -reconfigure -backend-config="credentials="${{ steps.auth-gcp.outputs.access_token }}"" && cd ..
+        run: cd terraform && terraform init -reconfigure -backend-config="access_token="${{ steps.auth-gcp.outputs.access_token }}"" && cd ..
           
       - name: Validate Terraform
         run: cd terraform && terraform validate -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
