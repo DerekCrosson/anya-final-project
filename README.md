@@ -1,4 +1,5 @@
-# GCP setup Polkadot Network
+# GCP setup Polkadot Network - INCOMPLETE
+This project is still incomplete and needs about 2 more full days of work to be done.
 
 # Prerequisites
 
