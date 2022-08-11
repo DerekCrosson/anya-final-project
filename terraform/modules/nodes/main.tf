@@ -1,43 +1,44 @@
 resource "google_compute_attached_disk" "node_data_attachment" {
-  disk     = google_compute_disk.node_data.id
-  instance = google_compute_instance.node.id
+  for_each = google_compute_disk.node_data
+    disk     = each.value.id
+    instance = google_compute_instance.node[each.key].id
 }
 
 resource "google_compute_disk" "node_data" {
-  name  = "${ var.node_attached_disk_name }"
-  type  = "${ var.node_attached_disk_type }"
-  zone  = "${ var.node_zone }"
-  labels = {
-    type = "blockchain-data"
-  }
-  physical_block_size_bytes = 16384
+  for_each = var.volumes
+    name  = each.value.name
+    type  = each.value.type
+    zone  = each.value.zone
+    labels = each.value.labels
+    physical_block_size_bytes = each.value.physical_block_size_bytes
 }
 
 resource "google_compute_instance" "node" {
-  name         = "${ var.node_name }"
-  machine_type = "${ var.node_machine_type }"
-  zone         = "${ var.node_zone }"
+  for_each = {for k, v in merge(var.boot_nodes, var.collator_nodes) : k => v}
+    name         = each.value.name
+    machine_type = each.value.machine_type
+    zone         = each.value.zone
 
-  tags = "${ var.node_tags }"
+    tags = each.value.tags
 
-  boot_disk {
-    initialize_params {
-      image = "${ var.node_image_project }/${ var.node_image_family }"
+    boot_disk {
+      initialize_params {
+        image = "${ var.node_image_project }/${ var.node_image_family }"
+      }
     }
-  }
 
-  network_interface {
-    network    = google_compute_network.vpc_network.name
-    subnetwork = google_compute_subnetwork.public.name
+    network_interface {
+      network    = google_compute_network.vpc_network.name
+      subnetwork = google_compute_subnetwork.public.name
 
-    access_config {
-      // Ephemeral public IP
+      access_config {
+        // Ephemeral public IP
+      }
     }
-  }
 
-  lifecycle {
-    ignore_changes = [attached_disk]
-  }
+    lifecycle {
+      ignore_changes = [attached_disk]
+    }
 }
 
 resource "google_compute_network" "vpc_network" {

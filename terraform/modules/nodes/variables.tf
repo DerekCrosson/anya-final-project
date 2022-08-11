@@ -1,3 +1,71 @@
+variable "volumes" {
+  default = {
+    "polkadot-boot-node-primary" = {
+      name              = "primary-boot-node-data"
+      type              = "pd-ssd"
+      zone              = "europe-west2-a"
+      labels = {
+        type = "blockchain-data",
+        role = "boot-node",
+        tier = "primary"
+      }
+
+      physical_block_size_bytes = 16384
+    },
+    "polkadot-boot-node-secondary" = {
+      name              = "secondary-boot-node-data"
+      type              = "pd-ssd"
+      zone              = "europe-west2-a"
+      labels = {
+        type = "blockchain-data",
+        role = "boot-node",
+        tier = "secondary"
+      }
+
+      physical_block_size_bytes = 16384
+    },
+    "polkadot-collator-node" = {
+      name              = "collator-node-data"
+      type              = "pd-ssd"
+      zone              = "europe-west2-a"
+      labels = {
+        type = "blockchain-data",
+        role = "collator-node"
+      }
+
+      physical_block_size_bytes = 16384
+    }
+  }
+}
+
+variable "boot_nodes" {
+  default = {
+    "polkadot-boot-node-primary" = {
+      name = "polkadot-boot-node-primary"
+      machine_type = "e2-medium"
+      zone = "europe-west2-a",
+      tags = ["polkadot", "node", "boot", "primary"]
+    },
+    "polkadot-boot-node-secondary" = {
+      name = "polkadot-boot-node-secondary"
+      machine_type = "e2-medium"
+      zone = "europe-west2-a",
+      tags = ["polkadot", "node", "boot", "secondary"]
+    }
+  }
+}
+
+variable "collator_nodes" {
+  default = {
+    "polkadot-collator-node" = {
+      name = "polkadot-collator-node"
+      machine_type = "e2-medium"
+      zone = "europe-west2-a",
+      tags = ["polkadot", "node", "collator"]
+    }
+  }
+}
+
 variable "node_image_family" {
   description = "The operating system family of the image."
   default = "ubuntu-2204-lts"
@@ -18,25 +86,25 @@ variable "service_account_scopes" {
   default = ["cloud-platform"]
 }
 
-variable "node_name" {
-  description = "The name of the resource"
-  default = "node"
-}
+# variable "node_name" {
+#   description = "The name of the resource"
+#   default = "node"
+# }
 
-variable "node_machine_type" {
-  description = "The type of machine used to create the runner"
-  default = "e2-medium"
-}
+# variable "node_machine_type" {
+#   description = "The type of machine used to create the runner"
+#   default = "e2-medium"
+# }
 
-variable "node_zone" {
-  description = "The zone that the resource is created in"
-  default = "europe-west2-a"
-}
+# variable "node_zone" {
+#   description = "The zone that the resource is created in"
+#   default = "europe-west2-a"
+# }
 
-variable "node_tags" {
-  description = "The tags for the resource"
-  default = ["polkadot", "node"]
-}
+# variable "node_tags" {
+#   description = "The tags for the resource"
+#   default = ["polkadot", "node"]
+# }
 
 variable "vpc_network_project_name" {
   description = "The GCP project name"
@@ -85,14 +153,14 @@ variable "blockchain_firewall_source_ranges" {
   default = ["0.0.0.0/0"]
 }
 
-variable "node_attached_disk_name" {
-  default = "node-data"
-}
+# variable "node_attached_disk_name" {
+#   default = "node-data"
+# }
 
-variable "node_attached_disk_type" {
-  default = "pd-ssd"
-}
+# variable "node_attached_disk_type" {
+#   default = "pd-ssd"
+# }
 
-variable "attached_disk_type" {
-  default = "pd-ssd"
-}
+# variable "attached_disk_type" {
+#   default = "pd-ssd"
+# }
