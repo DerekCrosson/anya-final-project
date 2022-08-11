@@ -13,17 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Authenticate to Google Cloud
-        id: auth-gcp
-        uses: google-github-actions/auth@v0
-        with:
-          workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
-          service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
-          project_id: '${ secrets.GCP_PROJECT_ID }'
-          audience: '${ secrets.GCP_POOL_AUDIENCE }'
-          token_format: 'access_token'
-          access_token_lifetime: '1800' # 30 minutes
-
       - name: Run ansible-lint
         uses: ansible-community/ansible-lint-action@v6.0.2
         with:
@@ -48,3 +37,17 @@ jobs:
       env:
         INVENTORY: ${{ secrets.INVENTORY }}
       run: 'echo "$INVENTORY" > ../ansible/inventory/hosts.ini'
+
+      - name: Authenticate to Google Cloud
+        id: auth-gcp
+        uses: google-github-actions/auth@v0
+        with:
+          workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
+          service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
+          project_id: '${ secrets.GCP_PROJECT_ID }'
+          audience: '${ secrets.GCP_POOL_AUDIENCE }'
+          token_format: 'access_token'
+          access_token_lifetime: '1800' # 30 minutes
+
+      - name: run playbook
+      run: ansible-playbook -i inventory inventory/hosts.ini
