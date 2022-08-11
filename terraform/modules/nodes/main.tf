@@ -128,3 +128,12 @@ resource "google_compute_firewall" "prometheus" {
   source_ranges = "${ var.blockchain_firewall_source_ranges }"
   target_tags   = ["allow-prometheus"]
 }
+
+resource "local_file" "ansible_inventory" {
+ filename = "../ansible/inventory/hosts.ini"
+ for_each = {for k, v in merge(var.boot_nodes, var.collator_nodes) : k => v}
+  content = <<EOF
+  [webserver]
+  ${google_compute_instance.node[each.key].id}
+  EOF
+}
