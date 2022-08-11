@@ -27,6 +27,6 @@ jobs:
           access_token_lifetime: '1800' # 30 minutes
 
       - name: Install Polkadot
-        uses: tomasnorre/ansible-cli-client@0.0.5
+        uses: tomasnorre/ansible-cli-client@0.0.7
         with:
           command: 'cd ansible && ansible-playbook -i inventory/hosts.ini playbook.yml && cd ..'
