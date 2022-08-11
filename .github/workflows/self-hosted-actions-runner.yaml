@@ -23,7 +23,7 @@ jobs:
           service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
           project_id: '${ secrets.GCP_PROJECT_ID }'
           token_format: 'access_token'
-          audience: "//iam.googleapis.com/projects/${ secrets.GCP_PROJECT_NUMBER }/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider"
+          audience: "//iam.googleapis.com/${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }"
 
       - name: Initialise Terraform
         run: cd terraform && terraform init -reconfigure -backend-config="credentials="${{ steps.auth-gcp.outputs.access_token }}"" && cd ..
