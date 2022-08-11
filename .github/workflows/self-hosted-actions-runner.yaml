@@ -22,10 +22,9 @@ jobs:
           workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
           service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
           project_id: '${ secrets.GCP_PROJECT_ID }'
-          token_format: 'access_token'
 
       - name: Initialise Terraform
-        run: make terraform-init -backend-config="credentials="${{ steps.auth-gcp.outputs.access_token }}""
+        run: make terraform-init -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}""
           
       - name: Validate Terraform
         run: make terraform-validate
