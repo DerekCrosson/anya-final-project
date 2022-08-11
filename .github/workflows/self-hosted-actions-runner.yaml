@@ -3,7 +3,7 @@ name: Deploy self-hosted actions runner
 on:
   push:
     branches: 
-      #- main
+      - main
 
 jobs:
   run:
