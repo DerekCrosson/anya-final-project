@@ -25,7 +25,7 @@ jobs:
           token_format: 'access_token'
 
       - name: Initialise Terraform
-        run: make terraform-init
+        run: make terraform-init -backend-config="credentials="${{ steps.auth-gcp.outputs.access_token }}""
           
       - name: Validate Terraform
         run: make terraform-validate
