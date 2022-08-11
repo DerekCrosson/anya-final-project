@@ -22,9 +22,10 @@ jobs:
           workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
           service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
           project_id: '${ secrets.GCP_PROJECT_ID }'
+          token_format: 'access_token'
 
       - name: Initialise Terraform
-        run: cd terraform && terraform init -reconfigure -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
+        run: cd terraform && terraform init -reconfigure -backend-config="credentials="${{ steps.auth-gcp.outputs.access_token }}"" && cd ..
           
       - name: Validate Terraform
         run: cd terraform && terraform validate -backend-config="credentials="${{ steps.auth-gcp.outputs.credentials_file_path }}"" && cd ..
