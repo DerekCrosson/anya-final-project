@@ -25,7 +25,7 @@ Add notes for creating a project, a service account and credentials and a remote
 # Infrastructure
 Terraform and Ansible are used to create and provision the infractructure. Terraform also generates the Ansible inventory which is used to keep track of the infrastructure where access may be needed regularly, such as block chain nodes where the software version needs to be updated regularly. These updates can be performed with Ansible.
 
-All Terraform commands are run from a Makefile to make the process easier and so they can be run from the root directory. The idea is to be able to have a single command to setup and configure the entire project which will also be run through CI (Github Actions).
+All Terraform commands are run from a Makefile to make the process easier and so they can be run from the root directory. The idea is to be able to have a single command to setup and configure the entire project which will also be run through CI (Github Actions). Github Actions will use Google Cloud Workload Identity Federation to generate a OAuth tokens for the service account which will then generate short-lived access tokens. This will allow the pipeline to run without using keys or secrets to authenticate. Short lived tokens are also removed from the runner as soon as the workflow stops.
 
 ### Initialise Terraform
 
@@ -54,7 +54,7 @@ make terraform-destroy
 TODO
 
 # Nodes
-TODO
+TODO: Write some info and show a diagram
 
 # Observability
 TODO
@@ -63,7 +63,7 @@ TODO
 TODO
 
 # CI/CD
-TODO
+TODO: Write some info and show a diagram
 
 # Development Environment Setup
 
