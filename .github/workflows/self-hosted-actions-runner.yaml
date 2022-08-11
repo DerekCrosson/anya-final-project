@@ -22,7 +22,7 @@ jobs:
           workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
           service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
           project_id: '${ secrets.GCP_PROJECT_ID }'
-          audience: '//iam.googleapis.com/projects/934971664122/locations/global/workloadIdentityPools/anya-final-project-derek/providers/github'
+          audience: '${ secrets.GCP_POOL_AUDIENCE }'
           token_format: 'access_token'
           access_token_lifetime: '1800' # 30 minutes
 
