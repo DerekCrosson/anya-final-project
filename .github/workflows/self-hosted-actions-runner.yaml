@@ -38,7 +38,7 @@ jobs:
         run: cd terraform && terraform apply -auto-approve && cd ..
 
       - name: Update Ansible Inventory
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "chore(inventory): update ip address list"
-        file_pattern: ansible/inventory/hosts.ini
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore(inventory): update ip address list"
+          file_pattern: ansible/inventory/hosts.ini
