@@ -10,7 +10,7 @@ jobs:
     name: 'Setup GCP and Deploy self-hosted actions runner'
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read'
+      contents: 'write'
       id-token: 'write'
     steps:
       - uses: actions/checkout@v3
