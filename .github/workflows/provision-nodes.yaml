@@ -1,9 +1,11 @@
 name: Provision Nodes
 
 on:
-  push:
-    branches: 
-      - main
+  workflow_run:
+    workflows: ["Deploy self-hosted actions runner"]
+    branches: [main]
+    types: 
+      - completed
 
   workflow_dispatch:
 
@@ -50,4 +52,4 @@ jobs:
           access_token_lifetime: '1800' # 30 minutes
 
       - name: run playbook
-      run: ansible-playbook -i inventory inventory/hosts.ini
+        run: ansible-playbook -i inventory inventory/hosts.ini
