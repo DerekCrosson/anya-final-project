@@ -32,4 +32,4 @@ jobs:
         run: cd terraform && terraform validate && cd ..
 
       - name: Create infrastructure
-        run: cd terraform && terraform apply -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }' -target=module.self_hosted_ci_runners.google_compute_instance.runner && cd ..
+        run: cd terraform && terraform apply -target=module.self_hosted_ci_runners.google_compute_instance.runner && cd ..
