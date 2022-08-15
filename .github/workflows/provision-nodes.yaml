@@ -49,14 +49,5 @@ jobs:
           token_format: 'access_token'
           access_token_lifetime: '1800' # 30 minutes
 
-      - name: Initialise Terraform
-        run: cd terraform && terraform init -reconfigure -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
-
-      - name: Validate Terraform
-        run: cd terraform && terraform validate && cd ..
-
-      - name: Create infrastructure
-        run: cd terraform && terraform apply -auto-approve && cd ..
-
       - name: run playbook
       run: ansible-playbook -i inventory inventory/hosts.ini
