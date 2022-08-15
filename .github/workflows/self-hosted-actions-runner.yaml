@@ -29,7 +29,7 @@ jobs:
         run: cd terraform && terraform init -reconfigure -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
 
       - name: Validate Terraform
-        run: cd terraform && terraform validate' && cd ..
+        run: cd terraform && terraform validate && cd ..
 
       - name: Create infrastructure
         run: cd terraform && terraform apply -target=module.self_hosted_ci_runners.google_compute_instance.runner -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }' && cd ..
