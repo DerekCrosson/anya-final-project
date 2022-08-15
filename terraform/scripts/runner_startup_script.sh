@@ -12,9 +12,9 @@ echo "a19a09f4eda5716e5d48ba86b6b78fc014880c5619b9dba4a059eaf65e131780  actions-
 
 tar xzf ./actions-runner-linux-x64-2.294.0.tar.gz && rm -rf ./actions-runner-linux-x64-2.294.0.tar.gz
 
-curl --request POST ${github_api_token_registration_url} --header "Authorization: token ${github_access_token}" > token.txt
+curl --request POST ${secrets.GITHUB_API_TOKEN_REGISTRATION_URL} --header "Authorization: token ${secrets.PERSONAL_ACCESS_TOKEN}" > token.txt
 runner_token=\$(jq -r '.token' output.txt)
 
-./config.sh --url ${repo_url} --token \$runner_token --name "Self Hosted Runner" --unattended
+./config.sh --url ${github.event.repository.name} --token \$runner_token --name "AMD64 Self Hosted Runner" --unattended
 
 ./run.sh
