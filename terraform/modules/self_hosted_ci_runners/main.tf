@@ -23,7 +23,7 @@ resource "google_compute_instance" "runner" {
     }
   }
   
-  metadata_startup_script = "../scripts/startup-script.sh"
+  metadata_startup_script = "${ file("../scripts/startup-script.sh") }"
 
   service_account {
     email  = "${ var.service_account_email }"
