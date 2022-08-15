@@ -26,9 +26,10 @@ jobs:
           access_token_lifetime: '1800' # 30 minutes
 
       - name: Initialise Terraform
-        run: cd terraform && terraform init -reconfigure -backend-config="access_token=${{ steps.auth-gcp.outputs.access_token }}" && cd ..
-          
+        run: cd terraform && terraform init -reconfigure -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
+
       - name: Validate Terraform
-        run: cd terraform && terraform validate -backend-config="access_token=${{ steps.auth-gcp.outputs.access_token }}" && cd ..
+        run: cd terraform && terraform validate -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
+
       - name: Create infrastructure
-        run: cd terraform && terraform apply -backend-config="access_token=${{ steps.auth-gcp.outputs.access_token }}" -target=module.self_hosted_ci_runners.google_compute_instance.runner -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }' && cd ..
+        run: cd terraform && terraform apply -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' -target=module.self_hosted_ci_runners.google_compute_instance.runner -var 'github_access_token=${ secrets.PERSONAL_ACCESS_TOKEN }' && cd ..
