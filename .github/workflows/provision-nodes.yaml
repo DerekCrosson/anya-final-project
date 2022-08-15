@@ -21,10 +21,9 @@ jobs:
           args: "ansible"
 
   run:
-    - name: 'Provision Nodes'
+    name: 'Provision Nodes'
     runs-on: ubuntu-latest
-		  needs: [ validate ]
-    
+    needs: [ validate ]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
