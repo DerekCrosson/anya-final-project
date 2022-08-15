@@ -22,8 +22,8 @@ resource "google_compute_instance" "runner" {
       // Ephemeral public IP
     }
   }
-
-  metadata_startup_script = "../scripts/runner_startup_script.sh"
+  
+  metadata_startup_script = templatefile("../scripts/startup-script.sh", { github_access_token = secrets.PERSONAL_ACCESS_TOKEN, repo_url = var.repository_url, api_token_registration_url = var.github_api_token_registration_url })
 
   service_account {
     email  = "${ var.service_account_email }"

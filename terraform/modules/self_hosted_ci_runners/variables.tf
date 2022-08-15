@@ -37,3 +37,11 @@ variable "runner_tags" {
   description = "The tags for the resource"
   default = ["github", "runner", "ci"]
 }
+
+variable "github_api_token_registration_url" {
+  default = "https://api.github.com/repos/DerekCrosson/anya-final-project/actions/runners/registration-token"
+}
+
+variable "repository_url" {
+  default = "https://github.com/DerekCrosson/anya-final-project"
+}
