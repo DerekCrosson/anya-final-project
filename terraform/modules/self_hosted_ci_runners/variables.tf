@@ -25,7 +25,7 @@ variable "runner_name" {
 
 variable "runner_machine_type" {
   description = "The type of machine used to create the runner"
-  default = "e2-micro"
+  default = "f1-micro"
 }
 
 variable "runner_zone" {
