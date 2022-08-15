@@ -35,4 +35,4 @@ jobs:
         run: cd terraform && terraform validate && cd ..
 
       - name: Create infrastructure
-        run: cd terraform && terraform apply && cd ..
+        run: cd terraform && terraform apply -auto-approve && cd ..
