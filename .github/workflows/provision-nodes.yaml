@@ -9,7 +9,7 @@ on:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
 
@@ -42,12 +42,21 @@ jobs:
         id: auth-gcp
         uses: google-github-actions/auth@v0
         with:
-          workload_identity_provider: '${ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }'
-          service_account: '${ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }'
-          project_id: '${ secrets.GCP_PROJECT_ID }'
-          audience: '${ secrets.GCP_POOL_AUDIENCE }'
+          workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
+          service_account: '${{ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }}'
+          project_id: '${{ secrets.GCP_PROJECT_ID }}'
+          audience: '${{ secrets.GCP_POOL_AUDIENCE }}'
           token_format: 'access_token'
           access_token_lifetime: '1800' # 30 minutes
+
+      - name: Initialise Terraform
+        run: cd terraform && terraform init -reconfigure -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
+
+      - name: Validate Terraform
+        run: cd terraform && terraform validate && cd ..
+
+      - name: Create infrastructure
+        run: cd terraform && terraform apply -auto-approve && cd ..
 
       - name: run playbook
       run: ansible-playbook -i inventory inventory/hosts.ini
