@@ -28,7 +28,10 @@ jobs:
       - name: Initialise Terraform
         run: cd terraform && terraform init -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
 
-      - name: Validate Terraform
+      - name: Generate Plan
+        run: cd terraform && terraform plan && cd ..
+
+      - name: Validate Resources
         run: cd terraform && terraform validate && cd ..
 
       - name: Create infrastructure
