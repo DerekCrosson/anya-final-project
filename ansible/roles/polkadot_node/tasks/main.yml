@@ -28,7 +28,7 @@
     owner: root
     group: root
     mode: 0600
-  become: yes
+  become: true
   changed_when: false
 
 - name: Enable Polkadot systemd service
