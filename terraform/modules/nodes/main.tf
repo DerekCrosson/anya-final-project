@@ -84,7 +84,7 @@ resource "google_compute_firewall" "ssh" {
   direction     = "INGRESS"
   network       = google_compute_network.vpc_network.name
   priority      = "${ var.node_ssh_firewall_rule_priority }"
-  source_service_accounts = ["${ var.service_account_email }"]
+  source_ranges = "${ var.ssh_firewall_source_ranges }"
 }
 
 resource "google_compute_firewall" "blockchain" {
