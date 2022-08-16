@@ -39,8 +39,9 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
 
-      - name: Make Credentials file more secure
-        run: chmod 400 ansible/.ssh/id_ed25519.pub
-
+      - uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      
       - name: Install Polkadot
         run: make ansible-playbook-execute

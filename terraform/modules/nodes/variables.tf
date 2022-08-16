@@ -3,7 +3,7 @@ variable "ssh_user" {
 }
 
 variable "ssh_public_key" {
-  default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDx5iIXV4UioEK/nmRnI1q84DXsrMaU9HInmFEM4fOky terraform@anya-fellowship-project.iam.gserviceaccount.com"
+  default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE8BLY7DPVentPNuwzRB199zXfjfvHIYFeGLW5xRNSgz terraform@anya-fellowship-project.iam.gserviceaccount.com"
 }
 
 variable "volumes" {
