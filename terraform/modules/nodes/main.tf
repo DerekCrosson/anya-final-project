@@ -41,6 +41,8 @@ resource "google_compute_instance" "node" {
       scopes = "${ var.service_account_scopes }"
     }
 
+    allow_stopping_for_update = true
+
     lifecycle {
       ignore_changes = [attached_disk]
     }
