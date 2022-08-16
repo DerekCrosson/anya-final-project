@@ -36,6 +36,11 @@ resource "google_compute_instance" "node" {
       }
     }
 
+    service_account {
+      email  = "${ var.service_account_email }"
+      scopes = "${ var.service_account_scopes }"
+    }
+
     lifecycle {
       ignore_changes = [attached_disk]
     }
