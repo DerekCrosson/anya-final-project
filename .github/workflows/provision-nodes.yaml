@@ -3,7 +3,8 @@ name: Provision Nodes
 on:
   workflow_run:
     workflows: ["Deploy Infrastructure"]
-    branches: [main]
+    branches: 
+      - main
     types: 
       - completed
 
