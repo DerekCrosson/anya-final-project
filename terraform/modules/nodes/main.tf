@@ -19,8 +19,6 @@ resource "google_compute_instance" "node" {
     machine_type = each.value.machine_type
     zone         = each.value.zone
 
-    hostname = each.value.name
-
     tags = each.value.tags
 
     boot_disk {
@@ -136,6 +134,6 @@ resource "local_file" "ansible_inventory" {
  for_each = {for k, v in merge(var.boot_nodes, var.collator_nodes) : k => v}
   content = <<EOF
 [blockchain_nodes]
-${google_compute_instance.node[each.key].hostname} ${google_compute_instance.node[each.key].network_interface[0].access_config[0].nat_ip}
+${google_compute_instance.node[each.key].network_interface[0].access_config[0].nat_ip}
 EOF
 }
