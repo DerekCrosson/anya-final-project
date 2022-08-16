@@ -51,4 +51,4 @@ jobs:
       #     access_token_lifetime: '600' # 10 minutes
 
       - name: Install Polkadot
-        run: ansible-playbook -i inventory ../ansible/inventory/hosts.ini
+        run: ansible-playbook -i inventory ./ansible/inventory/hosts.ini
