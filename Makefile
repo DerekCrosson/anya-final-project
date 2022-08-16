@@ -14,4 +14,4 @@ terraform-destroy:
 	cd terraform && terraform destroy --auto-approve && cd ..
 
 ansible-playbook-execute:
-	cd ansible && ansible-playbook -i inventory/hosts.ini playbook.yml && cd ..
+	cd ansible && ansible-playbook playbook.yml && cd ..
