@@ -42,7 +42,7 @@ variable "boot_nodes" {
   default = {
     "polkadot-boot-node-primary" = {
       name = "polkadot-boot-node-primary"
-      machine_type = "e2-medium"
+      machine_type = "e2-small"
       zone = "europe-west2-a",
       tags = ["polkadot", "node", "boot", "primary"]
     }#,
