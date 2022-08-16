@@ -8,7 +8,7 @@ ExecStart=/usr/bin/polkadot \
   --node-key-file /path/to/node/key \
   --chain polkadot \
   --listen-addr=/ip4/0.0.0.0/tcp/30334 \
-  --public-addr=/ip4/${%H}/tcp/30334 \
+  --public-addr=/ip4/${curl ifconfig.me}/tcp/30334 \
   --in-peers 50 \
   --out-peers 50 \
   --prometheus-external \
@@ -19,7 +19,7 @@ ExecStart=/usr/bin/polkadot \
   --chain kusama \
   --base-path /dev/sdb/kusama/db \
   --listen-addr=/ip4/0.0.0.0/tcp/30333 \
-  --public-addr=/ip4/${%H}/tcp/30333 \
+  --public-addr=/ip4/${curl ifconfig.me}/tcp/30333 \
   --in-peers 50 \
   --out-peers 50 \
   --pruning=1000 \
