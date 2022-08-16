@@ -22,7 +22,7 @@
   changed_when: false
 
 - name: Create Polkadot systemd service file
-  template:
+  ansible.builtin.template:
     src: polkadot.service
     dest: /etc/systemd/system/polkadot.service
     owner: root
