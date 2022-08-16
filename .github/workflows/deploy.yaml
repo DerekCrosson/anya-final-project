@@ -26,7 +26,7 @@ jobs:
           access_token_lifetime: '300' # 5 minutes
 
       - name: Initialise Terraform
-        run: make terraform-workflow-init
+        run: cd terraform && terraform init -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
 
       - name: Generate Plan
         run: make terraform-plan

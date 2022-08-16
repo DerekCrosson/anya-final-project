@@ -1,9 +1,6 @@
 terraform-init:
 	cd terraform && terraform init && cd ..
 
-terraform-workflow-init:
-	cd terraform && terraform init -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
-
 terraform-plan:
 	cd terraform && terraform plan && cd ..
 
