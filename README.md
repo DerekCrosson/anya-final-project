@@ -34,32 +34,12 @@ Add notes for creating a project, a service account and credentials and a remote
 [![Watch the video](https://i9.ytimg.com/vi/VipHgpVFY5k/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLAWXmy-ujXBJTJrtO6uKdxHXy-zVQ)](https://youtu.be/VipHgpVFY5k)
 
 # Infrastructure
+
 Terraform and Ansible are used to create and provision the infractructure. Terraform also generates the Ansible inventory which is used to keep track of the infrastructure where access may be needed regularly, such as block chain nodes where the software version needs to be updated regularly. These updates can be performed with Ansible.
 
-All Terraform commands are run from a Makefile to make the process easier and so they can be run from the root directory. The idea is to be able to have a single command to setup and configure the entire project which will also be run through CI (Github Actions). Github Actions will use Google Cloud Workload Identity Federation to generate a OAuth tokens for the service account which will then generate short-lived access tokens. This will allow the pipeline to run without using keys or secrets to authenticate. Short lived tokens are also removed from the runner as soon as the workflow stops.
+# CI/CD
 
-### Initialise Terraform
-
-```zsh
-make terraform-init
-```
-
-### Generate a plan
-
-```zsh
-make terraform-plan
-```
-
-### Create/Update infrastructure
-
-```zsh
-make terraform-apply
-```
-
-### Destroy all infrastructure except remote state bucket
-```zsh
-make terraform-destroy
-```
+All Terraform and Ansible commands are run from Github Actions to make the process easier and automated. In the Terraform workflow Github Actions uses Google Cloud Workload Identity Federation to generate a OAuth2 tokens for the service account which will then generate short-lived access tokens. This will allow the pipeline to run without using keys or secrets to authenticate. Short lived tokens are also removed from the runner as soon as the workflow stops. The Ansible workflow depends on the Terraform workflow and uses SSH with the private key stored in Github Actions secrets. To create/update and provision new infrastructure, just push to the main branch.
 
 # Provisioning
 TODO
@@ -69,12 +49,6 @@ TODO: Write some info and show a diagram
 
 # Observability
 TODO
-
-# Testing
-TODO
-
-# CI/CD
-TODO: Write some info and show a diagram
 
 # Development Environment Setup
 
@@ -90,5 +64,3 @@ TODO: Write some info and show a diagram
     ```
 
     - [Compute](https://cloud.google.com/compute/docs/reference/rest/v1)
-
-3. Run terraform code
