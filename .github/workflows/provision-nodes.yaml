@@ -40,7 +40,7 @@ jobs:
           if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
 
       - name: Make Credentials file more secure
-        run: chmod 400 ansible/.ssh/id_rsa.pub
+        run: chmod 400 ansible/.ssh/id_ed25519.pub
 
       - name: Install Polkadot
         run: cd ansible && ansible-playbook playbook.yml --key-file ".ssh/id_rsa.pub" && cd ..
