@@ -41,4 +41,4 @@ jobs:
           if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
 
       - name: Install Polkadot
-        run: ansible-playbook -i ansible/inventory/hosts.ini ansible/playbook.yml
+        run: ansible-playbook -i ansible/inventory/hosts.ini ansible/playbook.yml --key-file "terraform/modules/nodes/ssh/id_rsa.pub"

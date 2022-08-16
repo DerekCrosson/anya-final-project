@@ -37,7 +37,7 @@ resource "google_compute_instance" "node" {
     }
 
     metadata = {
-      ssh-keys = "ubuntu:${ file("ssh/id_rsa.pub") }"
+      ssh-keys = "ubuntu:${ file("${path.module}/ssh/id_rsa.pub") }"
     }
 
 
