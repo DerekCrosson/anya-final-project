@@ -26,16 +26,16 @@ jobs:
           access_token_lifetime: '300' # 5 minutes
 
       - name: Initialise Terraform
-        run: cd terraform && terraform init -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
+        run: make terraform-workflow-init
 
       - name: Generate Plan
-        run: cd terraform && terraform plan && cd ..
+        run: make terraform-plan
 
       - name: Validate Resources
-        run: cd terraform && terraform validate && cd ..
+        run: make terraform-validate
 
       - name: Create infrastructure
-        run: cd terraform && terraform apply -auto-approve && cd ..
+        run: make terraform-apply
 
       - name: Update Ansible Inventory
         uses: stefanzweifel/git-auto-commit-action@v4
