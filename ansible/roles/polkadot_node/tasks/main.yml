@@ -4,16 +4,22 @@
     set -o pipefail
     sudo gpg --recv-keys --keyserver hkps://keys.mailvelope.com 9D4B2B6EB8F97156D19669A9FF0812D491B96798
     sudo gpg --export 9D4B2B6EB8F97156D19669A9FF0812D491B96798 | sudo tee /usr/share/keyrings/parity.gpg
+  changed_when: false
+
 - name: Add the Parity repository and update the package index
   ansible.builtin.shell: |
     set -o pipefail
     echo 'deb [signed-by=/usr/share/keyrings/parity.gpg] https://releases.parity.io/deb release main' | sudo tee /etc/apt/sources.list.d/parity.list
     sudo apt update
+  changed_when: false
+
 - name: Install the `parity-keyring` package to ensure that the GPG key used by apt remains up-to-date
   ansible.builtin.command: sudo apt install parity-keyring
+  changed_when: false
 
 - name: Install Polkadot
   ansible.builtin.command: sudo apt install polkadot
+  changed_when: false
 
 - name: Create Polkadot systemd service file
   template:
@@ -23,6 +29,8 @@
     group: root
     mode: 0600
   become: yes
+  changed_when: false
 
 - name: Enable Polkadot systemd service
   ansible.builtin.command: sudo systemctl enable polkadot
+  changed_when: false
