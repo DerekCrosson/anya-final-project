@@ -30,10 +30,22 @@ jobs:
     needs: [ validate ]
     steps:
       - uses: actions/checkout@v3
+
+      - name: Authenticate to Google Cloud
+        id: auth-gcp
+        uses: google-github-actions/auth@v0
+        with:
+          workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
+          service_account: '${{ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }}'
+          project_id: '${{ secrets.GCP_PROJECT_ID }}'
+          token_format: 'access_token'
+          access_token_lifetime: '600' # 5 minutes
+      
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+        
       - name: Install dependencies Including Ansible
         run: |
           python -m pip install --upgrade pip
