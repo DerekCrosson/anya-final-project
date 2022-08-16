@@ -78,7 +78,7 @@ resource "google_compute_firewall" "ssh" {
   direction     = "INGRESS"
   network       = google_compute_network.vpc_network.name
   priority      = "${ var.node_ssh_firewall_rule_priority }"
-  source_ranges = "${ var.ssh_firewall_source_ranges }"
+  source_service_accounts = "${ google_compute_instance.node.*.service_account.email }"
   target_tags   = ["allow-ssh"]
 }
 
