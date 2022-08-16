@@ -32,7 +32,7 @@ resource "google_compute_instance" "node" {
       subnetwork = google_compute_subnetwork.public.name
 
       access_config {
-        // Ephemeral public IP
+        nat_ip = google_compute_address.static_ip.address
       }
     }
 
