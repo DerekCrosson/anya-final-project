@@ -14,4 +14,4 @@ terraform-destroy:
 	cd terraform && terraform destroy --auto-approve && cd ..
 
 ansible-playbook-execute:
-	cd ansible && ansible-playbook playbook.yml && cd ..
+	cd ansible && ansible-playbook playbook.yml --key-file ".ssh/id_ed25519.pub" && cd ..
