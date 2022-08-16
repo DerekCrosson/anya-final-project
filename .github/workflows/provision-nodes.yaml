@@ -24,23 +24,9 @@ jobs:
   run:
     name: 'Provision Nodes'
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
     needs: [ validate ]
     steps:
       - uses: actions/checkout@v3
-
-      - name: Authenticate to Google Cloud
-        id: auth-gcp
-        uses: google-github-actions/auth@v0
-        with:
-          workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
-          service_account: '${{ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }}'
-          project_id: '${{ secrets.GCP_PROJECT_ID }}'
-
-      - name: Make Credentials file more secure
-        run: chmod 400 "${{ steps.auth-gcp.outputs.credentials_file_path }}"
       
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -54,4 +40,4 @@ jobs:
           if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
 
       - name: Install Polkadot
-        run: cd ansible && ansible-playbook playbook.yml --key-file "${{ steps.auth-gcp.outputs.credentials_file_path }}" && cd ..
+        run: cd ansible && ansible-playbook playbook.yml && cd ..

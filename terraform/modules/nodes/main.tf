@@ -41,6 +41,12 @@ resource "google_compute_instance" "node" {
       scopes = "${ var.service_account_scopes }"
     }
 
+    metadata = {
+      "ssh-keys" = <<EOT
+    ${ var.ssh_user }:${ var.ssh_public_key }
+    EOT
+    }
+
     allow_stopping_for_update = true
 
     lifecycle {
