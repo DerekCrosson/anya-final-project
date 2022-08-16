@@ -1,5 +1,5 @@
 variable "ssh_user" {
-  default = "derek"
+  default = "ubuntu"
 }
 
 variable "ssh_public_key" {
