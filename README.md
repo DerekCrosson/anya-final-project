@@ -3,7 +3,7 @@ This project is still incomplete and needs about 2 more full days of work to be 
 TODO:
 - Increase GCP location quotas for disk size so all nodes can be deployed
 - Add startup script to self-hosted runners
-- Install Polkadot on all VMs (boot nodes and collator nodes)
+- Make polkadot systemd service dynamic
 - Create a Kubernetes cluster to run RPC nodes using Terraform
 - Deploy helm charts for RPC nodes and for observability using Ansible
 - Write/Update documentation and update videos
