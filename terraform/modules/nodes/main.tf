@@ -36,11 +36,6 @@ resource "google_compute_instance" "node" {
       }
     }
 
-    metadata = {
-      ssh-keys = "ubuntu:${ file("${path.module}/ssh/id_rsa.pub") }"
-    }
-
-
     lifecycle {
       ignore_changes = [attached_disk]
     }
