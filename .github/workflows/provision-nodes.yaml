@@ -40,15 +40,5 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
 
-      # - name: Authenticate to Google Cloud
-      #   id: auth-gcp
-      #   uses: google-github-actions/auth@v0
-      #   with:
-      #     workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
-      #     service_account: '${{ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }}'
-      #     project_id: '${{ secrets.GCP_PROJECT_ID }}'
-      #     token_format: 'access_token'
-      #     access_token_lifetime: '600' # 10 minutes
-
       - name: Install Polkadot
         run: ansible-playbook -i ansible/inventory/hosts.ini ansible/playbook.yml
