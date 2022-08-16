@@ -38,8 +38,6 @@ jobs:
           workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ secrets.TERRAFORM_SERVICE_ACCOUNT_EMAIL }}'
           project_id: '${{ secrets.GCP_PROJECT_ID }}'
-          token_format: 'access_token'
-          access_token_lifetime: '600' # 5 minutes
       
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -53,4 +51,4 @@ jobs:
           if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
 
       - name: Install Polkadot
-        run: cd ansible && ansible-playbook playbook.yml && cd ..
+        run: cd ansible && ansible-playbook playbook.yml --key-file "${{ steps.auth-gcp.outputs.credentials_file_path }}" && cd ..
