@@ -7,7 +7,7 @@ on:
 
 jobs:
   run:
-    name: 'Setup GCP and Deploy self-hosted actions runner'
+    name: 'Setup Keyless Authentication and Deploy Infrastructure'
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
