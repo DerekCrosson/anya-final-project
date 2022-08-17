@@ -1,4 +1,24 @@
 ---
+- name: Create Parachain data directory
+  ansible.builtin.file:
+    path: /mnt/disks/data/chains/polkadot/db/full
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  become: true
+  changed_when: false
+
+- name: Create Relay data directory
+  ansible.builtin.file:
+    path: /mnt/disks/data/chains/kusama/db/full
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  become: true
+  changed_when: false
+
 - name: Import the security@parity.io GPG key
   ansible.builtin.shell: |
     sudo gpg --recv-keys --keyserver hkps://keys.mailvelope.com 9D4B2B6EB8F97156D19669A9FF0812D491B96798
@@ -28,26 +48,6 @@
     owner: root
     group: root
     mode: 0600
-  become: true
-  changed_when: false
-
-  - name: Create Parachain data directory
-  ansible.builtin.file:
-    path: /mnt/disks/data/chains/polkadot/db/full
-    state: directory
-    mode: 0755
-    owner: polkadot
-    group: polkadot
-  become: true
-  changed_when: false
-
-- name: Create Relay data directory
-  ansible.builtin.file:
-    path: /mnt/disks/data/chains/kusama/db/full
-    state: directory
-    mode: 0755
-    owner: polkadot
-    group: polkadot
   become: true
   changed_when: false
 
