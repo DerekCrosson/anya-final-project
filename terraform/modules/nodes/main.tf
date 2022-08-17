@@ -146,7 +146,7 @@ resource "local_file" "ansible_inventory" {
   content = <<-EOT
 [blockchain_nodes]
 %{ for node in google_compute_instance.node ~}
-${node.instance_id} ${node.network_interface[0].access_config[0].nat_ip}
+${split("/", node.id)[5]} ${node.network_interface[0].access_config[0].nat_ip}
 %{ endfor ~}
   EOT
 }
