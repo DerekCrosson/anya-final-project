@@ -36,6 +36,8 @@ resource "google_compute_instance" "node" {
       }
     }
 
+    metadata_startup_script = "${ file("${path.module}/scripts/mount_persistent_disk.sh") }"
+
     service_account {
       email  = "${ var.service_account_email }"
       scopes = "${ var.service_account_scopes }"
