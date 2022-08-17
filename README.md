@@ -1,7 +1,6 @@
 # GCP setup Polkadot Network - INCOMPLETE
 This project is still incomplete and needs about 2 more full days of work to be done.
 TODO:
-- Increase GCP location quotas for disk size so all nodes can be deployed
 - Add startup script to self-hosted runners
 - Make polkadot systemd service dynamic
 - Create a Kubernetes cluster to run RPC nodes using Terraform
