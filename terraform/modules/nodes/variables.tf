@@ -41,7 +41,7 @@ variable "volumes" {
         role = "collator-node"
       }
 
-      physical_block_size_bytes = 50
+      size = 50
     }
   }
 }
