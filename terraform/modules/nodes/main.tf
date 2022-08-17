@@ -10,8 +10,7 @@ resource "google_compute_disk" "node_data" {
     type  = each.value.type
     zone  = each.value.zone
     labels = each.value.labels
-    #physical_block_size_bytes = each.value.physical_block_size_bytes
-    size = 50
+    size = each.value.size
 }
 
 resource "google_compute_instance" "node" {

@@ -18,31 +18,31 @@ variable "volumes" {
         tier = "primary"
       }
 
-      physical_block_size_bytes = 4096
-    }#,
-    # "polkadot-boot-node-secondary" = {
-    #   name              = "secondary-boot-node-data"
-    #   type              = "pd-ssd"
-    #   zone              = "europe-west2-b"
-    #   labels = {
-    #     type = "blockchain-data",
-    #     role = "boot-node",
-    #     tier = "secondary"
-    #   }
+      size = 50
+    },
+    "polkadot-boot-node-secondary" = {
+      name              = "secondary-boot-node-data"
+      type              = "pd-ssd"
+      zone              = "europe-west2-b"
+      labels = {
+        type = "blockchain-data",
+        role = "boot-node",
+        tier = "secondary"
+      }
 
-    #   physical_block_size_bytes = 4096
-    # },
-    # "polkadot-collator-node" = {
-    #   name              = "collator-node-data"
-    #   type              = "pd-ssd"
-    #   zone              = "europe-west2-c"
-    #   labels = {
-    #     type = "blockchain-data",
-    #     role = "collator-node"
-    #   }
+      size = 50
+    },
+    "polkadot-collator-node" = {
+      name              = "collator-node-data"
+      type              = "pd-ssd"
+      zone              = "europe-west2-c"
+      labels = {
+        type = "blockchain-data",
+        role = "collator-node"
+      }
 
-    #   physical_block_size_bytes = 4096
-    # }
+      physical_block_size_bytes = 50
+    }
   }
 }
 
@@ -53,24 +53,24 @@ variable "boot_nodes" {
       machine_type = "e2-small"
       zone = "europe-west2-a",
       tags = ["polkadot", "node", "boot", "primary", "allow-ssh"]
-    }#,
-    # "polkadot-boot-node-secondary" = {
-    #   name = "polkadot-boot-node-secondary"
-    #   machine_type = "e2-medium"
-    #   zone = "europe-west2-b",
-    #   tags = ["polkadot", "node", "boot", "secondary", "allow-ssh"]
-    # }
+    },
+    "polkadot-boot-node-secondary" = {
+      name = "polkadot-boot-node-secondary"
+      machine_type = "e2-medium"
+      zone = "europe-west2-b",
+      tags = ["polkadot", "node", "boot", "secondary", "allow-ssh"]
+    }
   }
 }
 
 variable "collator_nodes" {
   default = {
-    # "polkadot-collator-node" = {
-    #   name = "polkadot-collator-node"
-    #   machine_type = "e2-medium"
-    #   zone = "europe-west2-c",
-    #   tags = ["polkadot", "node", "collator", "allow-ssh"]
-    # }
+    "polkadot-collator-node" = {
+      name = "polkadot-collator-node"
+      machine_type = "e2-medium"
+      zone = "europe-west2-c",
+      tags = ["polkadot", "node", "collator", "allow-ssh"]
+    }
   }
 }
 
