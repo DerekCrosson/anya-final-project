@@ -144,9 +144,9 @@ resource "google_compute_firewall" "prometheus" {
 resource "local_file" "ansible_inventory" {
   filename = "../ansible/inventory/hosts.ini"
   content = <<-EOT
-  [blockchain_nodes]
-    %{ for node in google_compute_instance.node ~}
-    ${node.network_interface[0].access_config[0].nat_ip}
-    %{ endfor ~}
+[blockchain_nodes]
+%{ for node in google_compute_instance.node ~}
+${node.network_interface[0].access_config[0].nat_ip}
+%{ endfor ~}
   EOT
 }
