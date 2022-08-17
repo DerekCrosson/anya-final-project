@@ -11,7 +11,7 @@ RestartSec=10
 User=polkadot
 Group=polkadot
 
-ExecStart=/usr/bin/sudo /usr/bin/polkadot \
+ExecStart=/usr/bin/polkadot \
   --name anya-derek-bootnode-primary \
   --base-path /mnt/disks/data/chains/polkadot/db \
   --node-key-file /mnt/disks/data/chains/polkadot/node.key \
