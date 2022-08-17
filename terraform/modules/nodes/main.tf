@@ -145,8 +145,8 @@ resource "local_file" "ansible_inventory" {
   filename = "../ansible/inventory/hosts.ini"
   content = <<-EOT
   [blockchain_nodes]
-  %{ for node in merge(var.boot_nodes, var.collator_nodes) ~}
-  ${node.network_interface[0].access_config[0].nat_ipp}
-  %{ endfor ~}
+    %{ for k, v in merge(var.boot_nodes, var.collator_nodes) ~}
+    ${google_compute_instance.node[each.key].network_interface[0].access_config[0].nat_ip}
+    %{ endfor ~}
   EOT
 }
