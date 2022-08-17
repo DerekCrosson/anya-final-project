@@ -6,6 +6,8 @@
     mode: 0755
     owner: root
     group: root
+  become: true
+  changed_when: false
 
 - name: Create Relay data directory
   ansible.builtin.file:
@@ -14,6 +16,8 @@
     mode: 0755
     owner: root
     group: root
+  become: true
+  changed_when: false
 
 - name: Import the security@parity.io GPG key
   ansible.builtin.shell: |
