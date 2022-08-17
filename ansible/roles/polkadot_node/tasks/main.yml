@@ -1,7 +1,7 @@
 ---
 - name: Create Parachain data directory
-  file:
-    ansible.builtin.path: /mnt/disks/data/chains/polkadot/db/full
+  ansible.builtin.file:
+    path: /mnt/disks/data/chains/polkadot/db/full
     state: directory
     mode: 0755
     owner: root
