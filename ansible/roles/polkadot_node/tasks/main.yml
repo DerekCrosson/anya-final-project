@@ -63,6 +63,13 @@
   become: true
   changed_when: false
 
+- name: Download data snapshot from Polkashots
+  ansible.builtin.shell: |
+    sudo curl -o - -L https://dot-rocksdb.polkashots.io/snapshot |
+    lz4 -c -d - |
+    tar -x -C /mnt/disks/data/chains/polkadot
+  changed_when: false
+
 - name: Enable Polkadot systemd service
   ansible.builtin.command: sudo systemctl enable polkadot
   changed_when: false
