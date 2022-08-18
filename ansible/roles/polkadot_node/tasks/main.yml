@@ -16,9 +16,9 @@
 - name: Install `parity-keyring` package, Polkadot and extraction tools
   ansible.builtin.apt:
     pkg:
-    - parity-keyring
-    - polkadot
-    - liblz4-tool
+      - parity-keyring
+      - polkadot
+      - liblz4-tool
   become: true
 
 - name: Add polkadot user to sudo
