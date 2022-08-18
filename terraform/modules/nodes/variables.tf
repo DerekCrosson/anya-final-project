@@ -83,7 +83,7 @@ variable "boot_nodes" {
 variable "collator_nodes" {
   default = {
     "polkadot-collator-node-primary" = {
-      name = "polkadot-collator-node"
+      name = "polkadot-collator-node-primary"
       machine_type = "e2-medium"
       zone = "europe-west2-c",
       tags = [
