@@ -60,6 +60,7 @@ variable "boot_nodes" {
         "primary",
         "allow-ssh",
         "allow-relay-chain-and-parachain",
+        "allow-websocket-and-rpc",
         "allow-prometheus"
       ]
     },
@@ -74,6 +75,7 @@ variable "boot_nodes" {
         "secondary",
         "allow-ssh",
         "allow-relay-chain-and-parachain",
+        "allow-websocket-and-rpc",
         "allow-prometheus"
       ]
     }
@@ -93,6 +95,7 @@ variable "collator_nodes" {
         "primary",
         "allow-ssh",
         "allow-relay-chain-and-parachain",
+        "allow-websocket-and-rpc",
         "allow-prometheus"
       ]
     }
@@ -150,28 +153,20 @@ variable "node_ssh_firewall_rule_priority" {
   default = 1000
 }
 
-variable "node_relay_chain_ports" {
-  default = ["30333"]
-}
-
-variable "node_parachain_ports" {
-  default = ["30334"]
+variable "node_public_ports" {
+  default = ["30333", "30334"]
 }
 
 variable "node_web_socket_ports" {
-  default = ["8833"]
+  default = ["8844", "9944"]
 }
 
 variable "node_rpc_ports" {
-  default = ["8844"]
+  default = ["8833", "9933"]
 }
 
 variable "parachain_prometheus_ports" {
-  default = ["9615"]
-}
-
-variable "relay_chain_prometheus_ports" {
-  default = ["9625"]
+  default = ["9615", "9625"]
 }
 
 variable "ssh_firewall_source_ranges" {

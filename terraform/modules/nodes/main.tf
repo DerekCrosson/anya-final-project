@@ -95,12 +95,7 @@ resource "google_compute_firewall" "blockchain" {
 
   allow {
     protocol = "tcp"
-    ports    = "${ var.node_relay_chain_ports }"
-  }
-
-  allow {
-    protocol = "tcp"
-    ports    = "${ var.node_parachain_ports }"
+    ports    = "${ var.node_public_ports }"
   }
 
   source_ranges = "${ var.blockchain_firewall_source_ranges }"
@@ -113,12 +108,12 @@ resource "google_compute_firewall" "boot_node_and_collator_node" {
 
   allow {
     protocol = "tcp"
-    ports    = "${ var.node_relay_chain_ports }"
+    ports    = "${ var.node_web_socket_ports }"
   }
 
   allow {
     protocol = "tcp"
-    ports    = "${ var.node_parachain_ports }"
+    ports    = "${ var.node_rpc_ports }"
   }
 
   source_ranges = "${ var.blockchain_firewall_source_ranges }"
@@ -131,12 +126,7 @@ resource "google_compute_firewall" "prometheus" {
 
   allow {
     protocol = "tcp"
-    ports    = "${ var.parachain_prometheus_ports }"
-  }
-
-  allow {
-    protocol = "tcp"
-    ports    = "${ var.relay_chain_prometheus_ports }"
+    ports    = "${ var.prometheus_ports }"
   }
 
   source_ranges = "${ var.blockchain_firewall_source_ranges }"

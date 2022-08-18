@@ -29,7 +29,6 @@ ExecStart=/usr/bin/sudo /usr/bin/polkadot \
   --rpc-port 8833 \
   --ws-max-connections 100 \
   --listen-addr /ip4/0.0.0.0/tcp/30344/ws \
-  --listen-addr /ip6/::/tcp/30344/ws \
   --
   --chain kusama \
   --base-path /mnt/disks/data \
