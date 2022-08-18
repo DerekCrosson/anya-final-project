@@ -70,7 +70,7 @@
     tar -x -C /mnt/disks/data/chains/polkadot
   changed_when: false
 
-  - name: Download Kusama data snapshot from Polkashots
+- name: Download Kusama data snapshot from Polkashots
   ansible.builtin.shell: |
     set -o pipefail && curl -o - -L https://ksm-rocksdb.polkashots.io/snapshot |
     lz4 -c -d - |
