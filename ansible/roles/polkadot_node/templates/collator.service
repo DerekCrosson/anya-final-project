@@ -23,6 +23,7 @@ ExecStart=/usr/bin/sudo /usr/bin/polkadot \
   --out-peers 50 \
   --pruning=archive \
   --log parachain=debug,runtime=debug,runtime::inclusion=debug,runtime::inclusion-inherent=debug \
+  --telemetry-url "wss://telemetry.polkadot.io/submit 0" \
   --prometheus-external \
   --prometheus-port 9615 \
   --ws-port 8844 \
@@ -39,6 +40,7 @@ ExecStart=/usr/bin/sudo /usr/bin/polkadot \
   --db-cache 512 \
   --pruning=1000 \
   --unsafe-pruning \
+  --telemetry-url "wss://telemetry.polkadot.io/submit 0" \
   --prometheus-external \
   --prometheus-port 9625 \
   --ws-port 9944 \
