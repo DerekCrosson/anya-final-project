@@ -12,7 +12,7 @@ User=polkadot
 Group=polkadot
 
 ExecStart=/usr/bin/sudo /usr/bin/polkadot \
-  --name anya-derek-bootnode \
+  --name anya-derek-bootnode-{{ node_tier }} \
   --base-path /mnt/disks/data \
   --node-key-file /mnt/disks/data/chains/polkadot/node.key \
   --chain polkadot \
