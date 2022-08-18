@@ -1,4 +1,9 @@
 ---
+- name: Install extraction tools
+  ansible.builtin.command: apt-get install liblz4-tool
+  become: true
+  changed_when: false
+
 - name: Import the security@parity.io GPG key
   ansible.builtin.shell: |
     sudo gpg --recv-keys --keyserver hkps://keys.mailvelope.com 9D4B2B6EB8F97156D19669A9FF0812D491B96798
