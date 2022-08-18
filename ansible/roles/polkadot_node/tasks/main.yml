@@ -1,9 +1,4 @@
 ---
-- name: Install extraction tools
-  ansible.builtin.command: apt install liblz4-tool
-  become: true
-  changed_when: false
-
 - name: Import the security@parity.io GPG key
   ansible.builtin.shell: |
     sudo gpg --recv-keys --keyserver hkps://keys.mailvelope.com 9D4B2B6EB8F97156D19669A9FF0812D491B96798
@@ -18,13 +13,13 @@
     sudo apt update
   changed_when: false
 
-- name: Install the `parity-keyring` package to ensure that the GPG key used by apt remains up-to-date
-  ansible.builtin.command: sudo apt install parity-keyring
-  changed_when: false
-
-- name: Install Polkadot
-  ansible.builtin.command: sudo apt install polkadot
-  changed_when: false
+- name: Install `parity-keyring` package, Polkadot and extraction tools
+  ansible.builtin.apt:
+    pkg:
+    - parity-keyring
+    - polkadot
+    - liblz4-tool
+  become: true
 
 - name: Add polkadot user to sudo
   ansible.builtin.lineinfile:
