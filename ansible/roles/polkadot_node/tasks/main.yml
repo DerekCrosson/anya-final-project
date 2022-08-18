@@ -63,11 +63,18 @@
   become: true
   changed_when: false
 
-- name: Download data snapshot from Polkashots
+- name: Download Polkadot data snapshot from Polkashots
   ansible.builtin.shell: |
-    sudo curl -o - -L https://dot-rocksdb.polkashots.io/snapshot |
+    set -o pipefail && sudo curl -o - -L https://dot-rocksdb.polkashots.io/snapshot |
     lz4 -c -d - |
     tar -x -C /mnt/disks/data/chains/polkadot
+  changed_when: false
+
+  - name: Download Kusama data snapshot from Polkashots
+  ansible.builtin.shell: |
+    set -o pipefail && curl -o - -L https://ksm-rocksdb.polkashots.io/snapshot |
+    lz4 -c -d - |
+    tar -x -C /mnt/disks/data/chains/kusama
   changed_when: false
 
 - name: Enable Polkadot systemd service
