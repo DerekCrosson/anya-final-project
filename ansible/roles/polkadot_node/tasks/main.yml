@@ -21,27 +21,17 @@
   ansible.builtin.command: sudo apt install polkadot
   changed_when: false
 
-- name: Create Ansible sudoers file
-  ansible.builtin.template:
-    src: polkadot.service
-    dest: etc/sudoers.d/ansible_sudoers
-    owner: root
-    group: root
-    mode: 0440
-  become: true
-  changed_when: false
-
 - name: Add polkadot user to sudo
   ansible.builtin.lineinfile:
-  path: /etc/sudoers.d/ansible_sudoers
-  line: "polkadot ALL=(ALL) NOPASSWD: ALL"
-  state: present
-  mode: 0440
-  create: yes
-  validate: "visudo -cf %s"
-become: yes
-backup: yes
-changed_when: false
+    path: /etc/sudoers.d/ansible_sudoers
+    line: "polkadot ALL=(ALL) NOPASSWD: ALL"
+    state: present
+    mode: 0440
+    create: yes
+    validate: "visudo -cf %s"
+  become: yes
+  backup: yes
+  changed_when: false
 
 - name: Create Polkadot systemd service file
   ansible.builtin.template:
