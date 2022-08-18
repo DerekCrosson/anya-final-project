@@ -24,7 +24,7 @@ ExecStart=/usr/bin/polkadot \
   --prometheus-port 9615 \
   --ws-port 8844 \
   --rpc-port 8833 \
-  -- \
+  --
   --chain kusama \
   --base-path /mnt/disks/data/chains/kusama/db \
   --listen-addr=/ip4/0.0.0.0/tcp/30333 \
@@ -36,7 +36,7 @@ ExecStart=/usr/bin/polkadot \
   --prometheus-external \
   --prometheus-port 9625 \
   --ws-port 9944 \
-  --rpc-port 9933 \
+  --rpc-port 9933
 
 [Install]
 WantedBy=multi-user.target
