@@ -52,13 +52,29 @@ variable "boot_nodes" {
       name = "polkadot-boot-node-primary"
       machine_type = "e2-small"
       zone = "europe-west2-a",
-      tags = ["polkadot", "node", "boot", "primary", "allow-ssh"]
+      tags = [
+        "polkadot",
+        "node",
+        "boot",
+        "primary",
+        "allow-ssh",
+        "allow-relay-chain-and-parachain",
+        "allow-prometheus"
+      ]
     },
     "polkadot-boot-node-secondary" = {
       name = "polkadot-boot-node-secondary"
       machine_type = "e2-medium"
       zone = "europe-west2-b",
-      tags = ["polkadot", "node", "boot", "secondary", "allow-ssh"]
+      tags = [
+        "polkadot",
+        "node",
+        "boot",
+        "secondary",
+        "allow-ssh",
+        "allow-relay-chain-and-parachain",
+        "allow-prometheus"
+      ]
     }
   }
 }
@@ -69,7 +85,14 @@ variable "collator_nodes" {
       name = "polkadot-collator-node"
       machine_type = "e2-medium"
       zone = "europe-west2-c",
-      tags = ["polkadot", "node", "collator", "allow-ssh"]
+      tags = [
+        "polkadot",
+        "node",
+        "collator",
+        "allow-ssh",
+        "allow-relay-chain-and-parachain",
+        "allow-prometheus"
+      ]
     }
   }
 }
