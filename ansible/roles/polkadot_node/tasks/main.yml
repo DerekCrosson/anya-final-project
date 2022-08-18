@@ -18,7 +18,7 @@
     pkg:
       - parity-keyring
       - polkadot
-      #- liblz4-tool
+      # - liblz4-tool
   become: true
 
 - name: Add polkadot user to sudo
