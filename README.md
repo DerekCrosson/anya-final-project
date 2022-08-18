@@ -46,6 +46,9 @@ polkadot-boot-node-primary node_type=boot node_tier=primary ansible_host=12.345.
 polkadot-boot-node-secondary node_type=boot node_tier=secondary ansible_host=98.765.42.21 ansible_port=22
 polkadot-collator-node-primary node_type=collator node_tier=primary ansible_host=12.98.345.76 ansible_port=22
 ```
+
+The Github Action workflow which creates the infrastructure will commit the Ansible inventory changes to the repository whenever there is a change and this will be available to the Ansible workflow immediately.
+
 Each line contains the ID of the machine, the type of node it's running, it's tier (I did this so it's easy to identify nodes of the same type) and the SSH port.
 
 When Ansible runs the `polkadot_node` task it uses the information from the inventory to determine which systemd service to create, and to inject the public I.P. address and node tier into the node name in the systemd service.
