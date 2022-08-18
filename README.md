@@ -30,6 +30,14 @@ Add notes for creating a project, a service account and credentials and a remote
 
 [![Watch the video](https://i9.ytimg.com/vi/VipHgpVFY5k/mq1.jpg?sqp=CJytxpcG&rs=AOn4CLAWXmy-ujXBJTJrtO6uKdxHXy-zVQ)](https://youtu.be/VipHgpVFY5k)
 
+## Add Github Actions Secrets
+
+* GCP_PROJECT_ID - The project ID of the GCP project
+* GCP_WORKLOAD_IDENTITY_PROVIDER - The full identifier of the Workload Identity Provider, including the project number, pool name, and provider name (e.g. `projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`)
+* PERSONAL_ACCESS_TOKEN - A Github Personal Access Token (admin:gpg_key, delete:packages, read:user, repo, workflow, write:discussion, write:packages)
+* SSH_PRIVATE_KEY - The SSH private key that matched the public key variable in the Terraform nodes module variables
+* TERRAFORM_SERVICE_ACCOUNT_EMAIL - The email of the service account you are using to manage your Terraform resources and which is allowed to access the compute instances
+
 # Infrastructure
 
 Terraform and Ansible are used to create and provision the infractructure. Terraform also generates the Ansible inventory which is used to keep track of the infrastructure where access may be needed regularly, such as block chain nodes where the software version needs to be updated regularly. These updates can be performed with Ansible.
@@ -55,8 +63,8 @@ When Ansible runs the `polkadot_node` task it uses the information from the inve
 
 # Nodes
 The following nodes are created:
-    - 2 x boot nodes (primary and secondary)
-    - 1 x collator nodes
+* 2 x boot nodes (primary and secondary)
+* 1 x collator nodes
 
 # Observability
 TODO
