@@ -35,7 +35,7 @@ variable "volumes" {
     "polkadot-collator-node-primary" = {
       name              = "primary-collator-node-data"
       type              = "pd-ssd"
-      zone              = "europe-west2-c"
+      zone              = "europe-west2-a"
       labels = {
         type = "blockchain-data",
         role = "collator-node",
@@ -182,7 +182,7 @@ variable "rpc_cluster_name" {
 }
 
 variable "rpc_cluster_location" {
-  default = "europe-west2"
+  default = "europe-west2-a"
 }
 
 variable "rpc_nodes_name" {
@@ -190,7 +190,7 @@ variable "rpc_nodes_name" {
 }
 
 variable "rpc_nodes_location" {
-  default = "europe-west2"
+  default = "europe-west2-a"
 }
 
 variable "rpc_nodes_machine_type" {
