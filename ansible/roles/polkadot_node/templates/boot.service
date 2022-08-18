@@ -20,7 +20,7 @@ ExecStart=/usr/bin/sudo /usr/bin/polkadot \
   --public-addr=/ip4/{{ ansible_host }}/tcp/30334 \
   --in-peers 50 \
   --out-peers 50 \
-  --telemetry-url ws://telemetry.polkadot.io:8001/submit \
+  --telemetry-url "wss://telemetry.polkadot.io/submit 0" \
   --prometheus-external \
   --prometheus-port 9615 \
   --ws-port 8844 \
