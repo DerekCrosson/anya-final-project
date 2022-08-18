@@ -165,7 +165,7 @@ variable "node_rpc_ports" {
   default = ["8833", "9933"]
 }
 
-variable "parachain_prometheus_ports" {
+variable "node_prometheus_ports" {
   default = ["9615", "9625"]
 }
 

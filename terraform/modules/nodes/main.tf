@@ -126,7 +126,7 @@ resource "google_compute_firewall" "prometheus" {
 
   allow {
     protocol = "tcp"
-    ports    = "${ var.prometheus_ports }"
+    ports    = "${ var.node_prometheus_ports }"
   }
 
   source_ranges = "${ var.blockchain_firewall_source_ranges }"
