@@ -35,7 +35,7 @@
 
 - name: Create Polkadot systemd service file
   ansible.builtin.template:
-    src: polkadot.service
+    src: "{{ ansible_facts['node_type'].service }}"
     dest: /etc/systemd/system/polkadot.service
     owner: polkadot
     group: polkadot

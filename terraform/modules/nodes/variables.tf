@@ -81,7 +81,7 @@ variable "boot_nodes" {
 
 variable "collator_nodes" {
   default = {
-    "polkadot-collator-node" = {
+    "polkadot-collator-node-primary" = {
       name = "polkadot-collator-node"
       machine_type = "e2-medium"
       zone = "europe-west2-c",
@@ -89,6 +89,7 @@ variable "collator_nodes" {
         "polkadot",
         "node",
         "collator",
+        "primary",
         "allow-ssh",
         "allow-relay-chain-and-parachain",
         "allow-prometheus"
