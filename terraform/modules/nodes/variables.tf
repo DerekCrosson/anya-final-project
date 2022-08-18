@@ -198,5 +198,5 @@ variable "rpc_nodes_machine_type" {
 }
 
 variable "rpc_nodes_count" {
-  default = 2
+  default = 1
 }
