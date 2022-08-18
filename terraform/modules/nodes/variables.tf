@@ -32,13 +32,14 @@ variable "volumes" {
 
       size = 50
     },
-    "polkadot-collator-node" = {
-      name              = "collator-node-data"
+    "polkadot-collator-node-primary" = {
+      name              = "primary-collator-node-data"
       type              = "pd-ssd"
       zone              = "europe-west2-c"
       labels = {
         type = "blockchain-data",
-        role = "collator-node"
+        role = "collator-node",
+        tier = "primary"
       }
 
       size = 50
