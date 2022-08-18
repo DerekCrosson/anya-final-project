@@ -27,9 +27,6 @@ jobs:
 
       - name: Initialise Terraform
         run: cd terraform && terraform init -backend-config='access_token=${{ steps.auth-gcp.outputs.access_token }}' && cd ..
-
-      - name: Force state unlock - Temporary workaround
-        run: cd terraform && terraform force-unlock -force 1660861944205718 && cd ..
       
       - name: Generate Plan
         run: make terraform-plan
