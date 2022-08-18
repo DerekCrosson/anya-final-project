@@ -56,6 +56,28 @@ resource "google_compute_instance" "node" {
     }
 }
 
+resource "google_container_cluster" "rpc_cluster" {
+  name     = "${ var.rpc_cluster_name }"
+  location = "${ var.rpc_cluster_location }"
+
+  remove_default_node_pool = true
+  initial_node_count       = 1
+}
+
+resource "google_container_node_pool" "rpc_nodes" {
+  name       = "${ var.rpc_nodes_name }"
+  location   = "${ var.rpc_nodes_location }"
+  cluster    = google_container_cluster.rpc_cluster.name
+  node_count = "${ var.rpc_nodes_count }"
+
+  node_config {
+    machine_type = "${ var.rpc_nodes_machine_type }"
+
+    service_account = "${ var.service_account_email }"
+    oauth_scopes    = "${ var.service_account_scopes }"
+  }
+}
+
 resource "google_compute_network" "vpc_network" {
   project                 = "${ var.vpc_network_project_name }"
   name                    = "${ var.vpc_network_name }"

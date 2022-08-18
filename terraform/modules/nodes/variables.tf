@@ -176,3 +176,27 @@ variable "ssh_firewall_source_ranges" {
 variable "blockchain_firewall_source_ranges" {
   default = ["0.0.0.0/0"]
 }
+
+variable "rpc_cluster_name" {
+  default = "polkadot-rpc-cluster"
+}
+
+variable "rpc_cluster_location" {
+  default = "eu-west2"
+}
+
+variable "rpc_nodes_name" {
+  default = "polkadot-node-pool"
+}
+
+variable "rpc_nodes_location" {
+  default = "eu-west2"
+}
+
+variable "rpc_nodes_machine_type" {
+  default = "e2-medium"
+}
+
+variable "rpc_nodes_count" {
+  default = 2
+}
