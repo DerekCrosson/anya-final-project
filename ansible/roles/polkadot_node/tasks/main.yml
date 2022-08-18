@@ -1,6 +1,6 @@
 ---
 - name: Install extraction tools
-  ansible.builtin.command: apt-get install liblz4-tool
+  ansible.builtin.command: apt install liblz4-tool
   become: true
   changed_when: false
 
