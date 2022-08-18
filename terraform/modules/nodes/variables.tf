@@ -87,7 +87,7 @@ variable "collator_nodes" {
     "polkadot-collator-node-primary" = {
       name = "polkadot-collator-node-primary"
       machine_type = "e2-medium"
-      zone = "europe-west2-c",
+      zone = "europe-west2-a",
       tags = [
         "polkadot",
         "node",
