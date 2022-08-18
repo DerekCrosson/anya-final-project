@@ -182,7 +182,7 @@ variable "rpc_cluster_name" {
 }
 
 variable "rpc_cluster_location" {
-  default = "eu-west2"
+  default = "europe-west2"
 }
 
 variable "rpc_nodes_name" {
@@ -190,7 +190,7 @@ variable "rpc_nodes_name" {
 }
 
 variable "rpc_nodes_location" {
-  default = "eu-west2"
+  default = "europe-west2"
 }
 
 variable "rpc_nodes_machine_type" {
