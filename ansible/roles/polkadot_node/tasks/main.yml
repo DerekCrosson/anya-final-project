@@ -45,7 +45,7 @@
 
 - name: Create Parachain data directory
   ansible.builtin.file:
-    path: /mnt/disks/data/chains/polkadot/db/full
+    path: /mnt/disks/data/chains/polkadot
     state: directory
     mode: 0755
     owner: polkadot
@@ -55,7 +55,7 @@
 
 - name: Create Relay data directory
   ansible.builtin.file:
-    path: /mnt/disks/data/chains/kusama/db/full
+    path: /mnt/disks/data/chains/kusama
     state: directory
     mode: 0755
     owner: polkadot

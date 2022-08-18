@@ -13,7 +13,7 @@ Group=polkadot
 
 ExecStart=/usr/bin/sudo /usr/bin/polkadot \
   --name anya-derek-bootnode-primary \
-  --base-path /mnt/disks/data/chains/polkadot/db \
+  --base-path /mnt/disks/data \
   --node-key-file /mnt/disks/data/chains/polkadot/node.key \
   --chain polkadot \
   --listen-addr=/ip4/0.0.0.0/tcp/30334 \
@@ -26,7 +26,7 @@ ExecStart=/usr/bin/sudo /usr/bin/polkadot \
   --rpc-port 8833 \
   --
   --chain kusama \
-  --base-path /mnt/disks/data/chains/kusama/db \
+  --base-path /mnt/disks/data \
   --listen-addr=/ip4/0.0.0.0/tcp/30333 \
   --public-addr=/ip4/{{ ansible_host }}/tcp/30333 \
   --in-peers 50 \
