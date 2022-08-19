@@ -68,7 +68,7 @@ resource "google_container_node_pool" "rpc_nodes" {
   name       = "${ var.rpc_nodes_name }"
   location   = "${ var.rpc_nodes_location }"
   cluster    = google_container_cluster.rpc_cluster.name
-  node_count = "${ var.rpc_nodes_count }"
+  node_count = "${ var.rpc_nodes_per_zone_count }"
 
   node_config {
     machine_type = "${ var.rpc_nodes_machine_type }"

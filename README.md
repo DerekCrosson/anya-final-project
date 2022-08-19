@@ -2,7 +2,7 @@
 This project is still incomplete and needs about 2 more full days of work to be done.
 TODO:
 - Fix startup script for self-hosted runners
-- Create a Kubernetes cluster to run RPC nodes using Terraform
+- ~~Create a Kubernetes cluster to run RPC nodes using Terraform~~
 - Deploy helm charts for RPC nodes and for observability using Ansible
 - Write/Update documentation and update videos
 - Write bash scripts for manual tasks and run them using an Action

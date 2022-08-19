@@ -197,6 +197,6 @@ variable "rpc_nodes_machine_type" {
   default = "e2-medium"
 }
 
-variable "rpc_nodes_count" {
+variable "rpc_nodes_per_zone_count" {
   default = 1
 }

@@ -1,5 +1,5 @@
 - name: Setup Polkadot node
-  hosts: all
+  hosts: blockchain_nodes
 
   roles:
-    - polkadot_node
+    - polkadot_vps_node
