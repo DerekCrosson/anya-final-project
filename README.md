@@ -34,7 +34,7 @@ Add notes for creating a project, a service account and credentials and a remote
 
 * GCP_PROJECT_ID - The project ID of the GCP project
 * GCP_WORKLOAD_IDENTITY_PROVIDER - The full identifier of the Workload Identity Provider, including the project number, pool name, and provider name (e.g. `projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`)
-* PERSONAL_ACCESS_TOKEN - A Github Personal Access Token (admin:gpg_key, delete:packages, read:user, repo, workflow, write:discussion, write:packages)
+* PERSONAL_ACCESS_TOKEN - A Github Personal Access Token (read:user, repo, workflow)
 * SSH_PRIVATE_KEY - The SSH private key that matched the public key variable in the Terraform nodes module variables
 * TERRAFORM_SERVICE_ACCOUNT_EMAIL - The email of the service account you are using to manage your Terraform resources and which is allowed to access the compute instances
 
